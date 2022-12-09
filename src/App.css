@@ -1,38 +1,76 @@
-.App {
-  text-align: center;
+.task-name {
+  font-family: serif !important;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.form-control {
+  border: none !important;
+  border-bottom: 1px solid black !important;
+  border-radius: 0px !important;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.price{
+  text-align: end !important;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+.charge:focus,
+.item:focus {
+  box-shadow: none !important;
+}
+
+.add-item {
   align-items: center;
+  background-color: #fff;
+  border: 2px solid #000;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: inline-flex;
+  fill: #000;
+  font-family: Inter, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  height: 40px;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  letter-spacing: -.8px;
+  line-height: 24px;
+  min-width: 110px;
+  outline: 0;
+  padding: 0 10px;
+  text-align: center;
+  text-decoration: none;
+  transition: all .3s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
 }
 
-.App-link {
-  color: #61dafb;
+.add-item:focus {
+  color: #171e29;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.add-item:hover {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.add-item:active {
+  border-color: #06f;
+  color: #06f;
+  fill: #06f;
+}
+
+.amount {
+  font-family: serif !important;
+}
+
+@media (min-width: 768px) {
+  .add-item {
+    min-width: 120px;
   }
-  to {
-    transform: rotate(360deg);
+}
+@media (min-width: 500px) {
+  .add-item {
+    min-width: 100px;
   }
 }
