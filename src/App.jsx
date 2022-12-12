@@ -1,33 +1,21 @@
 import React, { useState } from 'react';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import ModeEditOutlineOutlinedIcon from '@mui/icons-material/ModeEditOutlineOutlined';
+import BasicModal from './Modal'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
 const App = () => {
 
-  // Hook For All Data
+
   const [data, setData] = useState([])
-
-  // Hook For Item
   const [item, setItem] = useState("");
-
-  // Hook For Charge
   const [charge, setcharge] = useState("");
-
-  // Hook For Toggle Button
   const [toggleBtn, setToggleBtn] = useState(true);
-
-  // Toggle For Updated Button
   const [index, setIndex] = useState(null);
-
-  // Hook For Condition
   const [update, setupdate] = useState(false)
-
-  // Let Total Sum
   const [totalCount, setTotalCount] = useState(0);
 
-  // const [totalNumber, setTotalNumber] = useState([])
 
 
   // Add Function
@@ -35,6 +23,7 @@ const App = () => {
     if (charge === "" || item === "") {
       alert("Please Fill Values")
     }
+
     else if (update) {
 
       data.splice(index, 1, { itemName: item, itemPrice: charge });
@@ -66,19 +55,22 @@ const App = () => {
   }
 
   // Function or Edit Item
-  const editFunc = (e, ind) => {
-
-    setToggleBtn(false)
-    setIndex(ind);
-    setupdate(true);
-    setItem(e.itemName);
-    setcharge(e.itemPrice);
+  const editFunc = (e, ind,line) => {
+    console.log(line)
+    // setToggleBtn(false)
+    // setIndex(ind);
+    // setupdate(true);
+    // setItem(e.itemName);
+    // setcharge(e.itemPrice);
+    // setTotalCount(totalCount - e.itemPrice)
   }
 
   // Clear All Function
   const clearAllFunc = () => {
     setData([])
+    setTotalCount(0)
   }
+
 
   return (
     <>
@@ -89,7 +81,6 @@ const App = () => {
           </div>
         </div>
       </div>
-
       <div className="container-fluid">
         <div className="row">
           <div className="col">
@@ -99,13 +90,13 @@ const App = () => {
                   <div className="col">
                     <div className="form-floating mb-3">
                       <input type="text" className="form-control item" id="floatingInput" placeholder="abcd" onChange={(e) => setItem(e.target.value)} value={item} />
-                      <label htmlFor="floatingInput" className='fw-bold'>Item</label>
+                      <label htmlFor="floatingInput" className='fw-bold'>Item😃</label>
                     </div>
                   </div>
                   <div className="col">
                     <div className="form-floating mb-3">
                       <input type="number" className="form-control charge" id="floatingInput" placeholder="abcd" onChange={(e) => setcharge(e.target.value)} value={charge} />
-                      <label htmlFor="floatingInput" className='fw-bold'>Charge</label>
+                      <label htmlFor="floatingInput" className='fw-bold'>Charges💸</label>
                     </div>
                   </div>
                 </div>
@@ -118,13 +109,14 @@ const App = () => {
                 </div>
 
                 {
-                  data.map((currentEl, index) => {
+                  data?.map((currentEl, index) => {
                     return (
                       <div className="row shadow bg-dark text-light my-3 py-1 rounded" key={index}>
-                        <div className="col">{currentEl.itemName}</div>
-                        <div className="col text-end">{currentEl.itemPrice}
+                        <div className="col-5">{currentEl.itemName}</div>
+                        <div className="col-4 text-start">{currentEl.itemPrice}</div>
+                        <div className="col-3 text-end">
                           <DeleteForeverIcon onClick={() => deleteFunc(currentEl.time, currentEl)} style={{ marginBottom: "4px" }} />
-                          <ModeEditOutlineOutlinedIcon onClick={() => { editFunc(currentEl, index) }} style={{ marginBottom: "4px" }} />
+                          <ModeEditOutlineOutlinedIcon onClick={() => { editFunc(currentEl, index,this) }} style={{ marginBottom: "4px" }} />
                         </div>
                       </div>
                     )
@@ -140,11 +132,14 @@ const App = () => {
 
 
 
-                <div className="row mb-3">
-                  <div className="col text-center">
-                    <button className="add-item" onClick={clearAllFunc}>Clear All</button>
-                  </div>
-                </div>
+                {
+                  data.length > 0 ? <div className="row mb-3">
+                    <div className="col text-center d-flex justify-content-around">
+                      <button className="add-item mx-1 my-1" onClick={clearAllFunc}>Clear All ❌</button>
+                      <BasicModal data={data} className="list-btn"/>
+                    </div>
+                  </div> : null
+                }
 
 
 
