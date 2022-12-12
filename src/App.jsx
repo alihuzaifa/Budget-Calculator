@@ -56,13 +56,12 @@ const App = () => {
 
   // Function or Edit Item
   const editFunc = (e, ind,line) => {
-    console.log(line)
-    // setToggleBtn(false)
-    // setIndex(ind);
-    // setupdate(true);
-    // setItem(e.itemName);
-    // setcharge(e.itemPrice);
-    // setTotalCount(totalCount - e.itemPrice)
+    setToggleBtn(false)
+    setIndex(ind);
+    setupdate(true);
+    setItem(e.itemName);
+    setcharge(e.itemPrice);
+    setTotalCount(totalCount - e.itemPrice)
   }
 
   // Clear All Function
