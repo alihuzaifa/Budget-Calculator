@@ -24,8 +24,8 @@ const App = () => {
       alert("Please Fill Values")
     }
 
+    // For Update
     else if (update) {
-
       data.splice(index, 1, { itemName: item, itemPrice: charge });
       setData(data);
       setupdate(false);
@@ -55,7 +55,7 @@ const App = () => {
   }
 
   // Function or Edit Item
-  const editFunc = (e, ind,line) => {
+  const editFunc = (e, ind, line) => {
     setToggleBtn(false)
     setIndex(ind);
     setupdate(true);
@@ -115,7 +115,7 @@ const App = () => {
                         <div className="col-4 text-start">{currentEl.itemPrice}</div>
                         <div className="col-3 text-end">
                           <DeleteForeverIcon onClick={() => deleteFunc(currentEl.time, currentEl)} style={{ marginBottom: "4px" }} />
-                          <ModeEditOutlineOutlinedIcon onClick={() => { editFunc(currentEl, index,this) }} style={{ marginBottom: "4px" }} />
+                          <ModeEditOutlineOutlinedIcon onClick={() => { editFunc(currentEl, index, this) }} style={{ marginBottom: "4px" }} />
                         </div>
                       </div>
                     )
@@ -135,7 +135,7 @@ const App = () => {
                   data.length > 0 ? <div className="row mb-3">
                     <div className="col text-center d-flex justify-content-around">
                       <button className="add-item mx-1 my-1" onClick={clearAllFunc}>Clear All ❌</button>
-                      <BasicModal data={data} className="list-btn"/>
+                      <BasicModal data={data} className="list-btn" />
                     </div>
                   </div> : null
                 }
